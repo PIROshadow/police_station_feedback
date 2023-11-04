@@ -2,8 +2,9 @@ export default function PoliceStationList({ params }) {
   console.log(params.district, params.taluka);
   return (
     <>
+    
+    <h1 className="text-black">Poilcestation List</h1>
       <div className="grid grid-cols-4 gap-4 p-20">
-        {/* Upper Row */}
         <div
           className="col-span-1 p-4 max-w-3/4 px-4 w-40 h-40 rounded-lg bg-black text-white"
           style={{ backgroundImage: 'url("your-image-url-1.jpg")' }}
