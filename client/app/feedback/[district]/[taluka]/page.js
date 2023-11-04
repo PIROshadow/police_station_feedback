@@ -1,60 +1,47 @@
-export default function PoliceStationList({ params }) {
-  console.log(params.district, params.taluka);
+"use client";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+
+export default function policeStationList({ params }) {
+  const [data, setData] = useState([]);
+
+  function policeStationList() {
+    fetch(
+      `http://192.168.59.200:5000/api/${params.district}/${params.taluka}/policestations`
+    )
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+        setData(result); // Store the fetched data in the state
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }
+
+  useEffect(() => {
+    policeStationList();
+  }, []);
+
   return (
     <>
-    
-    <h1 className="text-black">Poilcestation List</h1>
+      <h1 className="text-black">police Station List</h1>
       <div className="grid grid-cols-4 gap-4 p-20">
-        <div
-          className="col-span-1 p-4 max-w-3/4 px-4 w-40 h-40 rounded-lg bg-black text-white"
-          style={{ backgroundImage: 'url("your-image-url-1.jpg")' }}
-        >
-          Box 1
-        </div>
-        <div
-          className="col-span-1 p-4 max-w-3/4 px-4 w-40 h-40 rounded-lg bg-black text-white"
-          style={{ backgroundImage: 'url("your-image-url-2.jpg")' }}
-        >
-          Box 2
-        </div>
-        <div
-          className="col-span-1 p-4 max-w-3/4 px-4 w-40 h-40 rounded-lg bg-black text-white"
-          style={{ backgroundImage: 'url("your-image-url-3.jpg")' }}
-        >
-          Box 3
-        </div>
-        <div
-          className="col-span-1 p-4 max-w-3/4 px-4 w-40 h-40 rounded-lg bg-black text-white"
-          style={{ backgroundImage: 'url("your-image-url-4.jpg")' }}
-        >
-          Box 4
-        </div>
-
-        {/* Lower Row */}
-        <div
-          className="col-span-1 p-4 max-w-3/4 px-4 w-40 h-40 rounded-lg bg-black text-white"
-          style={{ backgroundImage: 'url("your-image-url-5.jpg")' }}
-        >
-          Box 5
-        </div>
-        <div
-          className="col-span-1 p-4 max-w-3/4 px-4 w-40 h-40 rounded-lg bg-black text-white"
-          style={{ backgroundImage: 'url("your-image-url-6.jpg")' }}
-        >
-          Box 6
-        </div>
-        <div
-          className="col-span-1 p-4 max-w-3/4 px-4 w-40 h-40 rounded-lg bg-black text-white"
-          style={{ backgroundImage: 'url("your-image-url-7.jpg")' }}
-        >
-          Box 7
-        </div>
-        <div
-          className="col-span-1 p-4 max-w-3/4 px-4 w-40 h-40 rounded-lg bg-black text-white"
-          style={{ backgroundImage: 'url("your-image-url-8.jpg")' }}
-        >
-          Box 8
-        </div>
+        {data.map((item, index) => (
+          <Link
+            href={`/feedback/${params.district}/${
+              params.taluka
+            }/${item.name.toLowerCase()}`}
+          >
+            <div
+              key={index}
+              className="col-span-1 p-4 max-w-3/4 px-4 w-40 h-40 rounded-lg bg-black text-white"
+              style={{ backgroundImage: 'url("your-image-url.jpg")' }}
+            >
+              {item.name}
+            </div>
+          </Link>
+        ))}
       </div>
     </>
   );
