@@ -1,17 +1,10 @@
-// pages/index.js (or any other page)
-//import Rating from './component/Rating';
+import Image from "next/image";
+import DistrictList from "./DistrictList/page";
 
-import Form from './component/Form';
-const HomePage = () => {
-  // Your page content here
-
+export default function Home() {
   return (
-    <div className=''>
-      
-      <Form />
-      
-  </div>
+    <>
+    <DistrictList />
+    </>
   );
-};
-
-export default HomePage;
+}

@@ -18,8 +18,8 @@
 
 body {
   color: rgb(var(--foreground-rgb));
- 
 }
+
 #app {
   height: 100%;
 }
