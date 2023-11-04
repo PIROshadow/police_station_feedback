@@ -1,7 +1,6 @@
-import Image from 'next/image'
+import Image from "next/image";
+import DistrictList from "./DistrictList/page";
 
 export default function Home() {
-  return (
-    <main>Lets Do It Guys</main>
-  )
+  return <DistrictList />;
 }
