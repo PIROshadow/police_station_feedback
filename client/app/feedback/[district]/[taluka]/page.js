@@ -35,8 +35,11 @@ export default function policeStationList({ params }) {
           >
             <div
               key={index}
-              className="col-span-1 p-4 max-w-3/4 px-4 w-40 h-40 rounded-lg bg-black text-white"
-              style={{ backgroundImage: 'url("your-image-url.jpg")' }}
+              className="col-span-1 p-4 max-w-3/4 px-4 w-40 h-40 rounded-lg bg-black text-black"
+              style={{
+                backgroundImage:
+                  'url("https://redpithemes.com/Documentation/assets/img/page_bg/page_bg_00.jpg")',
+              }}
             >
               {item.name}
             </div>
